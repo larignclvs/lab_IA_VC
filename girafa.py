@@ -20,12 +20,11 @@ _, thresh = cv2.threshold(img_gray, a/2*1.7, a, cv2.THRESH_BINARY_INV)
 # Detecção de bordas com Canny (usando imagem borrada)
 edges_blur = cv2.Canny(image=img_blur, threshold1=a/2, threshold2=a/2)
 
-# Contornos (opcionalmente sobre a imagem original)
+# Contornos 
 contours, _ = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 img_copy = img.copy()
 final = cv2.drawContours(img_copy, contours, -1, (255, 0, 0), 2)
 
-# Mostrar apenas as etapas da imagem de referência
 etapas = [img, img_gray, img_blur, thresh, edges_blur, final]
 titulos = ['Original', 'Cinza', 'Blur', 'Threshold', 'Canny', 'Contornos']
 
